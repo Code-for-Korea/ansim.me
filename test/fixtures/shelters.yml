@@ -1,0 +1,59 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  division: MyString
+  type: 
+  type_division: MyString
+  road_address: MyString
+  depr_address: MyString
+  'y': MyString
+  x: MyString
+  max_area: MyString
+  max_count: MyString
+  status: MyString
+  phone: MyString
+  etc: MyString
+  emergency_area: MyString
+  emergency_area_houses: 1
+  emergency_area_people: 1
+  emergency_area_people_vulnerable: 1
+  is_seismic: MyString
+  seismic_level: MyString
+  distance_to_shore: 1
+  elevation: 1
+  count_earthquake_signs: 1
+  count_emergency_area_signs: 1
+  count_earthquake_road_signs: 1
+  maintenance_agency: MyString
+  agency_phone: MyString
+  uploaded_at: MyString
+
+two:
+  name: MyString
+  division: MyString
+  type: 
+  type_division: MyString
+  road_address: MyString
+  depr_address: MyString
+  'y': MyString
+  x: MyString
+  max_area: MyString
+  max_count: MyString
+  status: MyString
+  phone: MyString
+  etc: MyString
+  emergency_area: MyString
+  emergency_area_houses: 1
+  emergency_area_people: 1
+  emergency_area_people_vulnerable: 1
+  is_seismic: MyString
+  seismic_level: MyString
+  distance_to_shore: 1
+  elevation: 1
+  count_earthquake_signs: 1
+  count_emergency_area_signs: 1
+  count_earthquake_road_signs: 1
+  maintenance_agency: MyString
+  agency_phone: MyString
+  uploaded_at: MyString
