@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @maskstore.type
+%p
+  %b Code:
+  = @maskstore.code
+%p
+  %b Name:
+  = @maskstore.name
+%p
+  %b Address:
+  = @maskstore.address
+%p
+  %b Latitude:
+  = @maskstore.latitude
+%p
+  %b Longitude:
+  = @maskstore.longitude
+
+= link_to 'Edit', edit_maskstore_path(@maskstore)
+\|
+= link_to 'Back', maskstores_path
