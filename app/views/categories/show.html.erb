@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<section class="container my-4">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+  <p>
+    <strong>분류명:</strong>
+    <%= @category.description %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+  <p>
+    <strong>분류키:</strong>
+    <%= @category.name %>
+  </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  <%= link_to '수정', edit_category_path(@category) %> |
+  <%= link_to '목록', categories_path %>
+</section>
