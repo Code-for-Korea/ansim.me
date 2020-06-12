@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Province:
+  = @covid19_clinic.province
+%p
+  %b Distring:
+  = @covid19_clinic.distring
+%p
+  %b Name:
+  = @covid19_clinic.name
+%p
+  %b Phone:
+  = @covid19_clinic.phone
+%p
+  %b Sampling:
+  = @covid19_clinic.sampling
+%p
+  %b Address:
+  = @covid19_clinic.address
+%p
+  %b Latitude:
+  = @covid19_clinic.latitude
+%p
+  %b Longitude:
+  = @covid19_clinic.longitude
+
+= link_to 'Edit', edit_covid19_clinic_path(@covid19_clinic)
+\|
+= link_to 'Back', covid19_clinics_path

@@ -1,0 +1,34 @@
+= form_for @covid19_clinic do |f|
+  - if @covid19_clinic.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@covid19_clinic.errors.count, "error")} prohibited this covid19_clinic from being saved:"
+      %ul
+        - @covid19_clinic.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :province
+    = f.text_field :province
+  .field
+    = f.label :distring
+    = f.text_field :distring
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :sampling
+    = f.check_box :sampling
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .actions
+    = f.submit 'Save'

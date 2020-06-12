@@ -33,11 +33,31 @@ def load_maskstores
   end
 end
 
+def load_covid19_clinics
+  header_ko = %w(연번 시도 시군구 선별진료소 전화번호 검체가능 주소 위도 경도)
+  header_en = %w(id province district name phone sampling address latitude longitude)
+
+  headers = Hash[header_ko.zip(header_en)]
+
+  Covid19Clinic.delete_all
+
+  CSV.foreach('db/covid19-clinics.csv', headers: true) do |csv|
+    data = {}
+    header_ko.each{ |x| data[headers[x]] = csv[x] }
+    data['sampling'] = true if data['sampling'] == 'Y'
+    data['sampling'] = false if data['sampling'] == 'N'
+    puts data
+    Covid19Clinic.create!(data)
+  end
+end
+
 if ENV['LOAD'].present?
   load_shelders if ENV['LOAD'] == 'shelter'
   load_maskstores if ENV['LOAD'] == 'maskstore'
+  load_covid19_clinics if ENV['LOAD'] == 'covid19clinic'
 else
   load_shelders
   load_maskstores
+  load_covid19_clinics
 end
 

@@ -1,0 +1,35 @@
+%h1 Listing covid19_clinics
+
+%table
+  %thead
+    %tr
+      %th Province
+      %th Distring
+      %th Name
+      %th Phone
+      %th Sampling
+      %th Address
+      %th Latitude
+      %th Longitude
+      %th
+      %th
+      %th
+
+  %tbody
+    - @covid19_clinics.each do |covid19_clinic|
+      %tr
+        %td= covid19_clinic.province
+        %td= covid19_clinic.distring
+        %td= covid19_clinic.name
+        %td= covid19_clinic.phone
+        %td= covid19_clinic.sampling
+        %td= covid19_clinic.address
+        %td= covid19_clinic.latitude
+        %td= covid19_clinic.longitude
+        %td= link_to 'Show', covid19_clinic
+        %td= link_to 'Edit', edit_covid19_clinic_path(covid19_clinic)
+        %td= link_to 'Destroy', covid19_clinic, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Covid19 clinic', new_covid19_clinic_path

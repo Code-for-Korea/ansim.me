@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :covid19_clinics
   resources :maskstores
   get 'map/index'
   resources :categories

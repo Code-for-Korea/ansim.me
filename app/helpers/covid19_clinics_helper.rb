@@ -1,0 +1,2 @@
+module Covid19ClinicsHelper
+end
