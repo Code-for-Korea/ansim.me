@@ -3,6 +3,7 @@
   %section.picket-map{ style: 'width: 100vw; height: 100vh' }
     #map{ style: 'width: 100%; height: 100%' }
     %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{google_map_apikey}"}
+
 = content_for :script do
   :javascript
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -27,11 +28,14 @@
       [01,37844571,"밝은온누리약국","대구광역시 달서구 달구벌대로 1736 1층 (두류동)",35.856678,128.5552778]
     ];*/
     var bounds = new google.maps.LatLngBounds();
-    var infowindow = new google.maps.InfoWindow();
+    var activeInfoWindow = new google.maps.InfoWindow();
 
     var infoview = '';
     for(i=0; i<places.length; i++) {
       const [type, id, name, address, latitude, longitude ] = places[i];
+      const infoWindow = new google.maps.InfoWindow({
+          content: name
+        });
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
@@ -41,8 +45,17 @@
         },
         picket: places[i]
       });
+
       bounds.extend(marker.position);
-      google.maps.event.addListener(marker, 'click', function(marker) { console.log(marker, this.picket) });
+      marker.addListener('click', function() {
+        if (activeInfoWindow != null) {
+          activeInfoWindow.close();
+        }
+
+        infoWindow.open(map, marker);
+
+        activeInfoWindow = infoWindow;
+      });
     };
 
     if (places.length > 1) {
