@@ -6,12 +6,9 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to '검색', root_path, class: "nav-link" %>
-      </li>
       <% Category.all.each do |category| %>
         <li class="nav-item">
-          <%= link_to category.description, '#', class: "nav-link" %>
+          <%= link_to category.description, root_path(category: category.name), class: "nav-link" %>
         </li>
       <% end %>
     </ul>

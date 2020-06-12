@@ -28,33 +28,21 @@
       [01,37844571,"밝은온누리약국","대구광역시 달서구 달구벌대로 1736 1층 (두류동)",35.856678,128.5552778]
     ];*/
     var bounds = new google.maps.LatLngBounds();
-    var activeInfoWindow = new google.maps.InfoWindow();
 
-    var infoview = '';
     for(i=0; i<places.length; i++) {
-      const [type, id, name, address, latitude, longitude ] = places[i];
-      const infoWindow = new google.maps.InfoWindow({
-          content: name
-        });
+      const [type, id, name, address, latitude, longitude, status ] = places[i];
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
         // icon: '#{image_url('picket.png')}',
         icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/#{ ["blue", "yellow", "pink"].shuffle.first }-dot.png",
+          url: "http://maps.google.com/mapfiles/ms/icons/"+status+"-dot.png",
         },
         picket: places[i]
       });
 
       bounds.extend(marker.position);
       marker.addListener('click', function() {
-        if (activeInfoWindow != null) {
-          activeInfoWindow.close();
-        }
-
-        infoWindow.open(map, marker);
-
-        activeInfoWindow = infoWindow;
       });
     };
 
