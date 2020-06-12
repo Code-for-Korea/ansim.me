@@ -8,41 +8,43 @@
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: new google.maps.LatLng(37.541, 126.986),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: 'terrain' // google.maps.MapTypeId.ROADMAP
     });
 
     var circle = {
         path: google.maps.SymbolPath.CIRCLE,
-        fillColor: 'red',
+        fillColor: 'green',
         fillOpacity: .8,
         scale: 7.5,
         strokeColor: 'white',
         strokeWeight: 1
     };
 
-    var pickets = [
+    var places = #{raw(@places.to_json)}
+    /*
+    var places = [
       [01,34840559,"신신약국","충청남도 홍성군 갈산면 상촌로 12-1",36.6029863,126.5489114],
       [01,37844571,"밝은온누리약국","대구광역시 달서구 달구벌대로 1736 1층 (두류동)",35.856678,128.5552778]
-    ];
+    ];*/
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow();
 
     var infoview = '';
-    for(i=0; i<pickets.length; i++) {
-      const [type, id, name, address, latitude, longitude ] = pickets[i];
+    for(i=0; i<places.length; i++) {
+      const [type, id, name, address, latitude, longitude ] = places[i];
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
         // icon: '#{image_url('picket.png')}',
-        picket: pickets[i]
+        picket: places[i]
       });
       bounds.extend(marker.position);
       google.maps.event.addListener(marker, 'click', function(marker) { console.log(marker, this.picket) });
     };
 
-    if (pickets.length > 1) {
+    if (places.length > 1) {
       map.fitBounds(bounds);
-    } else if (pickets.length == 1) {
+    } else if (places.length == 1) {
       map.setCenter(bounds.getCenter());
       map.setZoom(10);
     }
