@@ -28,9 +28,18 @@
       [01,37844571,"밝은온누리약국","대구광역시 달서구 달구벌대로 1736 1층 (두류동)",35.856678,128.5552778]
     ];*/
     var bounds = new google.maps.LatLngBounds();
+    var activeInfoWindow = new google.maps.InfoWindow();
 
+    var infoview = '';
     for(i=0; i<places.length; i++) {
-      const [type, id, name, address, latitude, longitude, status ] = places[i];
+      const [type, id, name, address, latitude, longitude, status_prev, status, status_next ] = places[i];
+      const infoWindow = new google.maps.InfoWindow({
+          content:
+            "<h5>"+name+"</h5>"
+            +"<p>"+address+"</p>"
+            +"<h6><span style='font-weight:bold;color:"+status_prev+"'>하루 전: ★</span> ‣ <span style='font-weight:bold;color:"+status+"'>현재: ★</span> ‣ <span style='font-weight:bold;color:"+status_next+"'>내일 예상: ★</span></h6>"
+            +"<p class='mt-1 border-top'><form class='form-inline'><select class='form-control form-control-sm mr-2'><option>충분함</option><option>적음</option><option>없음</option></select><a href=# class='btn btn-outline-primary btn-sm'>최신 정보 제보하기</a></form></p>"
+        });
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
@@ -43,6 +52,9 @@
 
       bounds.extend(marker.position);
       marker.addListener('click', function() {
+        if (activeInfoWindow != null) activeInfoWindow.close();
+        infoWindow.open(map, marker);
+        activeInfoWindow = infoWindow;
       });
     };
 

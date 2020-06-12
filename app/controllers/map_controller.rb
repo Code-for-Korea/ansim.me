@@ -13,7 +13,9 @@ class MapController < ApplicationController
           store.address,
           store.latitude,
           store.longitude,
-          status_sample
+          status_sample,
+          status_sample,
+          status_sample,
         ]
       end
     elsif @category == "선별진료소"
@@ -27,7 +29,9 @@ class MapController < ApplicationController
           shelter.road_address,
           shelter.y.to_f,
           shelter.x.to_f,
-          status_sample
+          status_sample,
+          status_sample,
+          status_sample,
         ]
       end
     end
