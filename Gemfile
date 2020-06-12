@@ -4,7 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
-gem 'pg'
+
+# db
+gem 'pg', '>= 0.18', '< 2.0'
+
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -22,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'haml-rails'
 gem 'jquery-rails'
+
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4', group: :development
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'capistrano3-puma' , group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
