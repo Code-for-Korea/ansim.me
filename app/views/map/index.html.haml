@@ -36,6 +36,9 @@
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
         // icon: '#{image_url('picket.png')}',
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/#{ ["blue", "yellow", "pink"].shuffle.first }-dot.png",
+        },
         picket: places[i]
       });
       bounds.extend(marker.position);
