@@ -16,6 +16,7 @@ class MapController < ApplicationController
           status_sample,
           status_sample,
           status_sample,
+          'quantity'
         ]
       end
     elsif @category == "선별진료소"
@@ -32,12 +33,13 @@ class MapController < ApplicationController
           status_sample,
           status_sample,
           status_sample,
+          'crowdness'
         ]
       end
     end
   end
 
   def status_sample
-    ["red", "orange", "green", "black"].sample
+    ["red", "orange", "green"].sample
   end
 end
